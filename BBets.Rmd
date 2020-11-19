@@ -61,6 +61,27 @@ Brownlow would have to payout 4.50:1 to make a fair bet.
 # What size of class makes the 2:1 bet fair?  
 <!--Explain and display the results of your method of coming up with the estimate of professor Brownlows betting profits!-->
 
+```{r}
+daysY=1:365
+saveBANK=vector("numeric")
+for(j in 1:1000){
+bank=0
+for(i in 1:367) {
+  class=sample(daysY,size=28,replace=TRUE)
+  n=length(unique(class))
+  if (n==28)bank=bank-2
+  else bank=bank+1
+}
+saveBANK[j]=bank
+}
+```
+
+```{r}
+hist(saveBANK)
+print(mean(saveBANK))
+```
+
+The class size should be 28 or 29 students for the 2:1 payoff to be fair. 
 
 # In the class and payoff as described what is a 95% confidence interval for Brownlow's earnings?
   
